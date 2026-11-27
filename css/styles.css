@@ -57,12 +57,19 @@ img { max-width: 100%; display: block; }
 a { color: var(--accent); text-underline-offset: 0.2em; }
 a:hover { color: var(--accent-dark); }
 
+/* Texto seleccionado y cursor de los campos con los colores de la web */
+::selection { background: #CFE6DD; color: var(--ink); }
+input, textarea { caret-color: var(--accent); }
+
 /* Anillo de foco visible solo al navegar con teclado */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 h1, h2, h3 { font-weight: 700; line-height: 1.15; }
 h2 { font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -0.02em; }
 h3 { font-size: 1.125rem; line-height: 1.3; }
+/* Que los títulos no se partan dejando una palabra sola en la última línea */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
 
 p { color: var(--ink-2); }
 
@@ -109,7 +116,8 @@ p { color: var(--ink-2); }
   border-radius: 0.5rem;
   z-index: 100;
 }
-.skip-link:focus { top: 1rem; color: #fff; }
+.skip-link:focus,
+.skip-link:hover { top: 1rem; color: #fff; }
 
 /* Botones */
 .btn {
@@ -128,7 +136,8 @@ p { color: var(--ink-2); }
 .btn-primary { background: var(--ink); color: #fff; }
 .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
 .btn-secondary { background: transparent; color: var(--ink); }
-.btn-secondary:hover { background: var(--ink); color: #fff; }
+/* Al pasar el ratón no se rellena de negro, para que no se confunda con el principal */
+.btn-secondary:hover { background: var(--paper-2); color: var(--ink); }
 
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
@@ -231,23 +240,34 @@ p { color: var(--ink-2); }
 .no-js #contact-form { display: none; }
 
 /* Portada */
-.hero { padding-block: 2.5rem 3rem; }
+.hero { padding-block: 2rem 2.5rem; }
 .hero + .section { border-top: 1px solid var(--line); }
-.hero-grid { display: grid; gap: 1.75rem; }
+
+/* En móvil: foto pequeña al lado del nombre y, debajo, el texto y los botones */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-areas:
+    "foto nombre"
+    "texto texto"
+    "botones botones";
+  align-items: center;
+  gap: 1rem 1rem;
+}
+.portrait { grid-area: foto; }
+.hero h1 { grid-area: nombre; }
+.hero .lead { grid-area: texto; max-width: 40rem; }
+.hero .actions { grid-area: botones; margin-top: 0.5rem; }
+
 .hero h1 {
-  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-size: clamp(2rem, 7vw, 4rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
-.hero .role { font-weight: 700; font-size: 1.2rem; margin-top: 1rem; color: var(--ink-2); }
-.hero .lead { margin-top: 0.75rem; max-width: 40rem; }
-.hero .actions { margin-top: 2rem; }
 
 .portrait {
-  width: 8.5rem;
-  order: -1; /* en móvil, la foto pequeña va encima del nombre */
   aspect-ratio: 5 / 6;
-  border-radius: 1.25rem;
+  border-radius: 0.6rem;
   overflow: hidden;
   background: var(--paper-2);
 }
@@ -262,26 +282,54 @@ p { color: var(--ink-2); }
 /* Conocimientos */
 .skills { display: grid; gap: 1.25rem; }
 .skills dt { font-size: 0.9rem; color: var(--muted); }
-.skills dd { margin: 0; font-weight: 600; }
+.skills dd { margin: 0; font-weight: 600; text-wrap: pretty; }
 
-/* Lista de proyectos en la portada: una fila por proyecto, toda la fila es un enlace */
+/* Lista de proyectos en la portada: captura grande, título, módulo, descripción y enlaces */
+.section-title:has(+ .section-intro) { margin-bottom: 1rem; }
+.section-intro { max-width: 40rem; margin-bottom: 1.75rem; }
+
 .work-index { list-style: none; padding: 0; border-top: 1px solid var(--line); }
-.work-index a {
+.work-row {
   display: grid;
-  gap: 0.15rem;
-  padding-block: 1.1rem;
+  gap: 1rem;
+  padding-block: 1.5rem;
   border-bottom: 1px solid var(--line);
-  color: var(--ink-2);
-  text-decoration: none;
 }
-.work-index strong { color: var(--ink); font-size: 1.2rem; font-weight: 700; }
-.work-index a:hover strong { color: var(--accent); }
-.more { margin-top: 2rem; }
+
+.work-thumb img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--paper-2);
+  transition: border-color 0.2s;
+}
+.work-thumb:hover img { border-color: var(--accent); }
+
+.work-text h3 { font-size: 1.3rem; }
+.work-text h3 a { color: var(--ink); text-decoration: none; }
+.work-text h3 a:hover { color: var(--accent); text-decoration: underline; }
+/* El módulo va justo debajo del título: es lo que ordena la lista */
+.work-text .modulo { margin-top: 0.3rem; font-size: 0.95rem; color: var(--ink-2); }
+.work-text p:not(.modulo):not(.work-links) { margin-top: 0.6rem; max-width: 36rem; }
+
+/* Enlaces de cada proyecto, con zona pulsable de 44 px para el dedo */
+.work-text .work-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1.25rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.work-text .work-links a:not(.btn) { display: inline-flex; align-items: center; min-height: 2.75rem; }
+
+.more { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-top: 1.25rem; font-weight: 600; }
+.more a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
 /* Llamada a contactar */
-.cta h2 { max-width: 30rem; }
-.cta p { margin-top: 1rem; max-width: 34rem; }
-.cta .actions { margin-top: 1.75rem; }
+.cierre p { margin-top: 1rem; max-width: 38rem; font-size: 1.125rem; }
 
 /* Cabecera de las otras páginas */
 .page-head { padding-block: 3.5rem 2.5rem; }
@@ -310,7 +358,7 @@ p { color: var(--ink-2); }
 .facts div:first-child { padding-top: 0; }
 .facts div:last-child { border-bottom: 0; padding-bottom: 0; }
 .facts dt { font-size: 0.85rem; color: var(--muted); }
-.facts dd { margin: 0; font-weight: 600; }
+.facts dd { margin: 0; font-weight: 600; text-wrap: balance; }
 
 /* Experiencia y formación (columna de fechas + contenido) */
 .timeline { list-style: none; padding: 0; }
@@ -403,13 +451,25 @@ p { color: var(--ink-2); }
   .site-nav ul { display: flex; gap: 2rem; padding: 0; }
   .site-nav li a { padding: 0; border: 0; }
 
-  .hero { padding-block: 5rem 4.5rem; }
-  .hero-grid { grid-template-columns: 1fr 14rem; align-items: end; gap: 4rem; }
-  .portrait { width: 100%; order: 0; }
+  .hero { padding-block: 2.75rem 2.5rem; }
+  /* Los proyectos, lo más importante, empiezan antes que el resto de secciones */
+  #proyectos { padding-top: 3rem; }
+  .hero-grid {
+    grid-template-columns: 1fr 11rem;
+    grid-template-areas:
+      "nombre foto"
+      "texto foto"
+      "botones foto";
+    align-items: end;
+    gap: 0.75rem 4rem;
+  }
+  .hero .actions { margin-top: 1rem; }
+  .portrait { align-self: start; }
 
   .skills { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
 
-  .work-index a { grid-template-columns: 14rem 1fr 1fr; align-items: baseline; gap: 2rem; }
+  /* En escritorio, captura y texto lado a lado, mitad y mitad */
+  .work-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 2.5rem; padding-block: 2rem; }
 
   .about-grid { grid-template-columns: 1fr 20rem; gap: 4rem; }
   .two-cols { grid-template-columns: 1fr 1fr; gap: 4rem; }

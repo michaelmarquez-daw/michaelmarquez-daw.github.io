@@ -23,6 +23,13 @@ if (menuButton && nav) {
   });
 }
 
+// Si se entra con un ancla (proyectos.html#surco-discos), al terminar de cargar fuentes
+// e imágenes el texto de arriba cambia de altura y la ficha se mueve. La vuelvo a colocar.
+window.addEventListener("load", () => {
+  const destino = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+  if (destino) destino.scrollIntoView();
+});
+
 // Año del pie
 const year = document.querySelector("[data-year]");
 if (year) {

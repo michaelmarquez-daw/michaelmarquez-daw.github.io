@@ -10,6 +10,11 @@
   <meta property="og:description" content="Estudiante de Desarrollo de Aplicaciones Web en Madrid. Proyectos, CV y contacto.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://michaelmarquez-daw.github.io/">
+  <meta property="og:image" content="https://michaelmarquez-daw.github.io/assets/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -40,54 +45,77 @@
   <main id="contenido">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <h1>Michael Márquez Calvo</h1>
-          <p class="role">Estudiante de Desarrollo de Aplicaciones Web</p>
-          <p class="lead">Estoy en el ciclo de DAW en Universae y busco empresa en Madrid para hacer las prácticas. Abajo tienes los proyectos que he hecho y mi CV.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="proyectos.html">Ver proyectos</a>
-            <a class="btn btn-secondary" href="assets/cv/CV_Michael_Marquez_Calvo_DAW.pdf" download>Descargar CV (PDF)</a>
-          </div>
-        </div>
         <div class="portrait">
-          <img src="assets/img/foto.jpg" alt="Foto de Michael Márquez Calvo" width="332" height="398" fetchpriority="high">
+          <img src="assets/img/foto.jpg" alt="" width="332" height="398" fetchpriority="high">
+        </div>
+        <h1>Michael Márquez Calvo</h1>
+        <p class="lead">Estudio Desarrollo de Aplicaciones Web en Universae y busco empresa en Madrid para hacer las prácticas.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-secondary" href="assets/cv/CV_Michael_Marquez_Calvo_DAW.pdf">Ver mi CV (PDF)</a>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="titulo-conocimientos">
-      <div class="container">
-        <div class="section-title"><h2 id="titulo-conocimientos">Con qué trabajo</h2></div>
-        <dl class="skills">
-          <div><dt>Lenguajes</dt><dd>Java, JavaScript, PHP, SQL</dd></div>
-          <div><dt>Web y datos</dt><dd>HTML5, CSS3, MySQL, XML, JSON</dd></div>
-          <div><dt>Herramientas</dt><dd>Git y GitHub, VS Code, IntelliJ, XAMPP</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="titulo-proyectos">
+    <section class="section" id="proyectos" aria-labelledby="titulo-proyectos">
       <div class="container">
         <div class="section-title"><h2 id="titulo-proyectos">Proyectos del ciclo</h2></div>
+        <p class="section-intro">Cinco proyectos hechos en distintos módulos del ciclo. Todos tienen el código en GitHub y dos se pueden probar en el navegador.</p>
         <ul class="work-index">
-          <li><a href="proyectos.html"><span class="modulo">Entorno servidor</span><strong>Surco discos</strong><span>Tienda online con PHP y MySQL</span></a></li>
-          <li><a href="proyectos.html"><span class="modulo">Entorno cliente</span><strong>Calculadora de notas</strong><span>JavaScript, JSON y localStorage</span></a></li>
-          <li><a href="proyectos.html"><span class="modulo">Programación</span><strong>Gestor de biblioteca</strong><span>Java, Maven y JUnit</span></a></li>
-          <li><a href="proyectos.html"><span class="modulo">Bases de datos</span><strong>Base de datos de un instituto</strong><span>SQL con vistas, procedimientos y triggers</span></a></li>
-          <li><a href="proyectos.html"><span class="modulo">Lenguajes de marcas</span><strong>Catálogo de videojuegos</strong><span>XML, XSD, XPath, XSLT y JSON</span></a></li>
+          <li class="work-row">
+            <a class="work-thumb" href="proyectos.html#surco-discos" tabindex="-1" aria-hidden="true"><img src="assets/img/proyectos/mini/tienda-php.jpg" alt="" width="800" height="500" loading="lazy"></a>
+            <div class="work-text">
+              <h3><a href="proyectos.html#surco-discos">Surco Discos</a></h3>
+              <p class="modulo">Desarrollo web en servidor · PHP y MySQL</p>
+              <p>Tienda online de vinilos con carrito, pedidos y panel de administración. No tiene demo porque necesita un servidor con PHP.</p>
+              <p class="work-links"><a href="https://github.com/michaelmarquez-daw/tienda-php">Código en GitHub</a></p>
+            </div>
+          </li>
+          <li class="work-row">
+            <a class="work-thumb" href="proyectos.html#calculadora-notas" tabindex="-1" aria-hidden="true"><img src="assets/img/proyectos/mini/notas-js.jpg" alt="" width="848" height="530" loading="lazy"></a>
+            <div class="work-text">
+              <h3><a href="proyectos.html#calculadora-notas">Calculadora de notas del ciclo</a></h3>
+              <p class="modulo">Desarrollo web en cliente · JavaScript y JSON</p>
+              <p>Calcula la media del ciclo a partir de la nota de cada módulo y la guarda en el navegador.</p>
+              <p class="work-links"><a href="https://michaelmarquez-daw.github.io/notas-js/">Probar la demo</a><a href="https://github.com/michaelmarquez-daw/notas-js">Código en GitHub</a></p>
+            </div>
+          </li>
+          <li class="work-row">
+            <a class="work-thumb" href="proyectos.html#gestor-biblioteca" tabindex="-1" aria-hidden="true"><img src="assets/img/proyectos/mini/biblioteca-java.jpg" alt="" width="690" height="416" loading="lazy"></a>
+            <div class="work-text">
+              <h3><a href="proyectos.html#gestor-biblioteca">Gestor de biblioteca</a></h3>
+              <p class="modulo">Programación y Entornos de desarrollo · Java, Maven y JUnit</p>
+              <p>Programa de consola para llevar libros, socios y préstamos. Las reglas, como el máximo de tres libros por socio, tienen tests.</p>
+              <p class="work-links"><a href="https://github.com/michaelmarquez-daw/biblioteca-java">Código en GitHub</a></p>
+            </div>
+          </li>
+          <li class="work-row">
+            <a class="work-thumb" href="proyectos.html#base-datos-instituto" tabindex="-1" aria-hidden="true"><img src="assets/img/proyectos/mini/instituto-sql.jpg" alt="" width="690" height="431" loading="lazy"></a>
+            <div class="work-text">
+              <h3><a href="proyectos.html#base-datos-instituto">Base de datos de un instituto</a></h3>
+              <p class="modulo">Bases de datos · SQL en MySQL</p>
+              <p>Del modelo entidad-relación a la base de datos, con consultas, vistas y triggers que validan los datos.</p>
+              <p class="work-links"><a href="https://github.com/michaelmarquez-daw/instituto-sql">Código en GitHub</a></p>
+            </div>
+          </li>
+          <li class="work-row">
+            <a class="work-thumb" href="proyectos.html#catalogo-videojuegos" tabindex="-1" aria-hidden="true"><img src="assets/img/proyectos/mini/videojuegos-xml.jpg" alt="" width="800" height="500" loading="lazy"></a>
+            <div class="work-text">
+              <h3><a href="proyectos.html#catalogo-videojuegos">Catálogo de videojuegos</a></h3>
+              <p class="modulo">Lenguajes de marcas · XML, XSD y XSLT</p>
+              <p>Un catálogo en XML validado y convertido en página web con XSLT.</p>
+              <p class="work-links"><a href="https://michaelmarquez-daw.github.io/videojuegos-xml/web/">Probar la demo</a><a href="https://github.com/michaelmarquez-daw/videojuegos-xml">Código en GitHub</a></p>
+            </div>
+          </li>
         </ul>
-        <p class="more"><a class="btn btn-secondary" href="proyectos.html">Ver todos los proyectos</a></p>
+        <p class="more"><a href="proyectos.html">Fichas completas de cada proyecto</a><a href="https://github.com/michaelmarquez-daw">Todos los repositorios en GitHub</a></p>
       </div>
     </section>
 
-    <section class="section cta" aria-labelledby="titulo-contacto">
+    <section class="section cierre" aria-labelledby="titulo-contacto">
       <div class="container">
-        <h2 id="titulo-contacto">¿Buscas alumno en prácticas?</h2>
-        <p>Estoy en Madrid. Si tienes una plaza, escríbeme y lo hablamos.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="contacto.html">Contactar</a>
-          <a class="btn btn-secondary" href="sobre-mi.html">Saber más de mí</a>
-        </div>
+        <h2 id="titulo-contacto">Contacto</h2>
+        <p>Si tienes una plaza de prácticas en Madrid, escríbeme a <a href="mailto:michael.marquez.calvo2@gmail.com">michael.marquez.calvo2@gmail.com</a> y lo hablamos. También puedes ver <a href="assets/cv/CV_Michael_Marquez_Calvo_DAW.pdf">mi CV en PDF</a> o leer <a href="sobre-mi.html">mi formación y&nbsp;experiencia</a>.</p>
       </div>
     </section>
   </main>
