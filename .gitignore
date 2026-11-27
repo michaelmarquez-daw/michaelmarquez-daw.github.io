@@ -1,0 +1,14 @@
+# Código fuente del CV (el PDF que se descarga está en assets/cv/)
+/cv/
+
+# Cada proyecto tiene su propio repositorio
+/proyectos/
+
+# Editores
+.vscode/
+.idea/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store

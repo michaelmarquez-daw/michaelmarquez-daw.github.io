@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto · Michael Márquez Calvo</title>
+  <meta name="description" content="Contacta con Michael Márquez Calvo para prácticas de Desarrollo de Aplicaciones Web en Madrid.">
+  <meta name="theme-color" content="#FBFAF6">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    // Va aquí, en el <head>, para quitar "no-js" antes de que se pinte la página
+    document.documentElement.classList.remove("no-js");
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Michael <em>Márquez</em></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav class="site-nav" id="menu" aria-label="Principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="sobre-mi.html">Sobre mí</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="page-head">
+      <div class="container">
+        <h1>Cómo <em>contactar</em></h1>
+        <p class="lead">Si tienes una plaza de prácticas o quieres preguntarme algo, escríbeme. Respondo lo antes posible.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <dl class="contact-list">
+          <div><dt>Email</dt><dd><a href="mailto:michael.marquez.calvo2@gmail.com">michael.marquez.calvo2@gmail.com</a></dd></div>
+          <div><dt>Ciudad</dt><dd><strong>Madrid</strong></dd></div>
+          <div><dt>CV</dt><dd><a href="assets/cv/CV_Michael_Marquez_Calvo_DAW.pdf" download>Descargar en PDF</a></dd></div>
+        </dl>
+
+        <form class="form" id="contact-form" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="nombre-error">
+            <p class="error-msg" id="nombre-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+            <p class="error-msg" id="email-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required maxlength="1200" aria-describedby="mensaje-error"></textarea>
+            <p class="error-msg" id="mensaje-error" aria-live="polite"></p>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Preparar email</button>
+          </div>
+          <p class="form-note">Al pulsar el botón debería abrirse tu programa de correo con el mensaje ya escrito.</p>
+          <p class="form-status" role="status"></p>
+        </form>
+        <noscript>
+          <p>El formulario necesita JavaScript. Puedes escribirme directamente a
+          <a href="mailto:michael.marquez.calvo2@gmail.com">michael.marquez.calvo2@gmail.com</a>.</p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a class="brand" href="index.html">Michael <em>Márquez</em></a></p>
+      <p class="footer-meta">
+        <a href="mailto:michael.marquez.calvo2@gmail.com">michael.marquez.calvo2@gmail.com</a>
+        <span>Madrid · <span data-year>2026</span></span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

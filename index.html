@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michael Márquez Calvo · Estudiante de Desarrollo de Aplicaciones Web</title>
+  <meta name="description" content="Portfolio de Michael Márquez Calvo, estudiante de Desarrollo de Aplicaciones Web en Madrid. Busco empresa para las prácticas del ciclo.">
+  <meta name="theme-color" content="#FBFAF6">
+  <meta property="og:title" content="Michael Márquez Calvo · Portfolio">
+  <meta property="og:description" content="Estudiante de Desarrollo de Aplicaciones Web en Madrid. Proyectos, CV y contacto.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    // Va aquí, en el <head>, para quitar "no-js" antes de que se pinte la página
+    document.documentElement.classList.remove("no-js");
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Michael <em>Márquez</em></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav class="site-nav" id="menu" aria-label="Principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Inicio</a></li>
+          <li><a href="sobre-mi.html">Sobre mí</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Michael<br><em>Márquez Calvo</em></h1>
+          <p class="role">Estudiante de Desarrollo de Aplicaciones Web</p>
+          <p class="lead">Estoy en el ciclo de DAW en Universae y busco empresa en Madrid para hacer las prácticas. Aquí tienes lo que estoy haciendo, mi CV y cómo contactar conmigo.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="proyectos.html">Ver proyectos</a>
+            <a class="btn btn-secondary" href="assets/cv/CV_Michael_Marquez_Calvo_DAW.pdf" download>Descargar CV (PDF)</a>
+          </div>
+        </div>
+        <div class="portrait">
+          <img src="assets/img/foto.jpg" alt="Foto de Michael Márquez Calvo" width="332" height="398" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titulo-conocimientos">
+      <div class="container">
+        <div class="section-title"><h2 id="titulo-conocimientos">Con qué trabajo</h2></div>
+        <div class="skills">
+          <div>
+            <h3>Lenguajes</h3>
+            <ul class="chips solid">
+              <li>Java</li><li>JavaScript</li><li>PHP</li><li>SQL</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Web y datos</h3>
+            <ul class="chips">
+              <li>HTML5</li><li>CSS3</li><li>MySQL</li><li>XML</li><li>JSON</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Herramientas</h3>
+            <ul class="chips">
+              <li>Git</li><li>GitHub</li><li>VS Code</li><li>IntelliJ</li><li>XAMPP</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" aria-labelledby="titulo-proyectos">
+      <div class="container">
+        <div class="section-title"><h2 id="titulo-proyectos">Proyectos del ciclo</h2></div>
+        <ul class="work-index">
+          <li><a href="proyectos.html"><span class="status">Entorno servidor</span><strong>Surco discos</strong><span>Tienda online con PHP y MySQL</span></a></li>
+          <li><a href="proyectos.html"><span class="status">Entorno cliente</span><strong>Calculadora de notas</strong><span>JavaScript, JSON y localStorage</span></a></li>
+          <li><a href="proyectos.html"><span class="status">Programación</span><strong>Gestor de biblioteca</strong><span>Java, Maven y JUnit</span></a></li>
+          <li><a href="proyectos.html"><span class="status">Bases de datos</span><strong>Base de datos de un instituto</strong><span>SQL con vistas, procedimientos y triggers</span></a></li>
+          <li><a href="proyectos.html"><span class="status">Lenguajes de marcas</span><strong>Catálogo de videojuegos</strong><span>XML, XSD, XPath, XSLT y JSON</span></a></li>
+        </ul>
+        <p class="band-more"><a class="btn btn-light" href="proyectos.html">Ver todos los proyectos</a></p>
+      </div>
+    </section>
+
+    <section class="section cta" aria-labelledby="titulo-contacto">
+      <div class="container">
+        <h2 id="titulo-contacto">¿Tienes una plaza de prácticas?</h2>
+        <p>Estoy disponible para hacer las prácticas del ciclo en Madrid. Si crees que puedo encajar en tu equipo, escríbeme y lo hablamos.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="contacto.html">Contactar</a>
+          <a class="btn btn-secondary" href="sobre-mi.html">Saber más de mí</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a class="brand" href="index.html">Michael <em>Márquez</em></a></p>
+      <p class="footer-meta">
+        <a href="mailto:michael.marquez.calvo2@gmail.com">michael.marquez.calvo2@gmail.com</a>
+        <span>Madrid · <span data-year>2026</span></span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

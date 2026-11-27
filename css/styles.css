@@ -1,0 +1,481 @@
+/* =========================================================
+   Portfolio de Michael Márquez Calvo
+   Hoja de estilos única para todas las páginas.
+
+   Orden del archivo:
+   1. Fuentes
+   2. Variables (colores, tipografías, medidas)
+   3. Base y reseteo
+   4. Utilidades y componentes comunes (botones, etiquetas...)
+   5. Cabecera y navegación
+   6. Secciones de cada página
+   7. Pie de página
+   8. Ajustes para pantallas grandes (mobile first)
+   ========================================================= */
+
+/* ---------- 1. Fuentes (alojadas en el propio sitio) ---------- */
+@font-face { font-family: "Instrument Serif"; src: url("../assets/fonts/instrument-serif-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url("../assets/fonts/instrument-serif-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../assets/fonts/jetbrains-mono-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+/* ---------- 2. Variables ---------- */
+:root {
+  /* Colores: los mismos que el CV */
+  --paper: #FBFAF6;
+  --paper-2: #F3F1EA;
+  --ink: #121417;
+  --ink-2: #2B2F36;
+  --muted: #5F656E;
+  --line: #E2DED4;
+  --accent: #0F7B5F;
+  --accent-dark: #0B5E48;
+  --night: #14171C;
+  --night-2: #1C2027;
+  --night-line: #323944;
+  --night-text: #CDD2DA;
+  --night-accent: #7FD1B4;
+
+  /* Tipografías */
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+
+  /* Medidas */
+  --container: 68rem;      /* ancho máximo del contenido (~1088px) */
+  --gutter: 1rem;          /* margen lateral en móvil */
+  --radius: 0.75rem;
+  --header-h: 4rem;
+}
+
+/* ---------- 3. Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { scroll-padding-top: calc(var(--header-h) + 1rem); }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;     /* 17px */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { flex: 1; } /* el pie queda abajo aunque la página sea corta */
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:hover { color: var(--accent-dark); }
+
+/* Anillo de foco visible solo al navegar con teclado */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 { font-weight: 400; line-height: 1.1; }
+h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.01em; }
+h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-height: 1.3; }
+
+p { color: var(--ink-2); }
+
+/* Si el usuario pide menos animaciones en su sistema, las quitamos */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- 4. Utilidades y componentes ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: 4rem; }
+.section + .section { border-top: 1px solid var(--line); }
+/* La banda oscura ya separa por sí sola: sin líneas claras en sus bordes */
+.band,
+.band + .section { border-top: 0; }
+
+/* Título de sección con línea fina a la derecha, como en el CV */
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.lead { font-size: 1.1875rem; line-height: 1.65; max-width: 38rem; }
+
+/* Enlace para saltar al contenido: invisible hasta que recibe el foco */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; color: #fff; }
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  font-weight: 600;
+  font-size: 0.975rem;
+  text-decoration: none;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+.btn-secondary { background: transparent; color: var(--ink); }
+.btn-secondary:hover { background: var(--ink); color: #fff; }
+.btn-light { background: #fff; color: var(--ink); border-color: #fff; }
+.btn-light:hover { background: var(--night-accent); border-color: var(--night-accent); color: var(--ink); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* Etiquetas de tecnologías (igual que en el CV) */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
+.chips li {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid #D3CEC2;
+  border-radius: 0.4rem;
+  background: #fff;
+}
+.chips.solid li { background: var(--ink); border-color: var(--ink); color: #fff; }
+.chips.dark li { background: transparent; border-color: #434B57; color: #D5DAE1; }
+
+/* Estado de un proyecto ("en desarrollo"...) en cursiva serif */
+.status {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+/* ---------- 5. Cabecera y navegación ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 250, 246, 0.94);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-h);
+}
+
+.brand {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1;
+}
+.brand em { color: var(--accent); }
+.brand:hover { color: var(--ink); }
+
+/* Botón del menú: solo se ve en móvil */
+.menu-toggle {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.site-nav ul {
+  list-style: none;
+  padding: 0;
+}
+.site-nav a {
+  display: block;
+  color: var(--ink-2);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.975rem;
+}
+.site-nav a:hover { color: var(--accent); }
+/* La página en la que estás aparece subrayada en verde */
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45em;
+}
+
+/* En móvil el menú se despliega debajo de la cabecera.
+   Está oculto por defecto y JavaScript añade la clase .is-open */
+.site-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav.is-open { display: block; }
+.site-nav ul { padding: 0.5rem var(--gutter) 1rem; }
+.site-nav li a { padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+.site-nav li:last-child a { border-bottom: 0; }
+
+/* Si JavaScript no funciona, el menú se muestra siempre en una fila que puede partirse
+   y la cabecera deja de ser fija para no tapar media pantalla */
+.no-js .menu-toggle { display: none; }
+.no-js .site-header { position: static; }
+.no-js .site-header .container { flex-wrap: wrap; }
+.no-js .site-nav { display: block; position: static; border: 0; }
+.no-js .site-nav ul { display: flex; flex-wrap: wrap; gap: 0 1.25rem; padding: 0 0 0.75rem; }
+.no-js .site-nav li a { border: 0; padding: 0.5rem 0; }
+/* Sin JavaScript el formulario no puede funcionar: se oculta y queda el email */
+.no-js #contact-form { display: none; }
+
+/* ---------- 6. Secciones ---------- */
+
+/* --- Portada (index) --- */
+.hero { padding-block: 2.5rem 3rem; }
+.hero + .section { border-top: 1px solid var(--line); }
+.hero-grid { display: grid; gap: 1.75rem; }
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3.25rem, 11vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+}
+.hero h1 em { color: var(--accent); }
+.hero .role { font-weight: 700; font-size: 1.2rem; margin-top: 1.5rem; color: var(--ink-2); }
+.hero .lead { margin-top: 0.75rem; }
+.hero .actions { margin-top: 2rem; }
+
+.portrait {
+  width: 8.5rem;
+  order: -1;               /* en móvil, la foto pequeña va encima del nombre */
+  aspect-ratio: 5 / 6;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  filter: saturate(0.85);
+}
+
+/* Bloque de conocimientos */
+.skills { display: grid; gap: 1.75rem; }
+.skills h3 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin-bottom: 0.75rem; }
+
+/* Banda oscura (proyecto destacado / portfolio) */
+.band { background: var(--night); color: var(--night-text); }
+.band p { color: var(--night-text); }
+.band h2 { color: #fff; }
+.band .section-title::after { background: var(--night-line); }
+.band .status { color: var(--night-accent); }
+
+/* Índice de proyectos en la portada: una fila por proyecto, todo el bloque es un enlace */
+.work-index { list-style: none; padding: 0; border-top: 1px solid var(--night-line); }
+.work-index a {
+  display: grid;
+  gap: 0.15rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--night-line);
+  color: var(--night-text);
+  text-decoration: none;
+}
+.work-index a:hover strong { color: var(--night-accent); }
+.work-index .status { font-size: 1.05rem; }
+.work-index strong { color: #fff; font-size: 1.2rem; font-weight: 700; }
+.band-more { margin-top: 2rem; }
+
+/* Llamada a contactar */
+.cta { text-align: left; }
+.cta h2 { max-width: 30rem; }
+.cta p { margin-top: 1rem; max-width: 34rem; }
+.cta .actions { margin-top: 1.75rem; }
+
+/* --- Cabecera de páginas interiores --- */
+.page-head { padding-block: 3.5rem 2.5rem; }
+.page-head h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.page-head h1 em { color: var(--accent); }
+.page-head .lead { margin-top: 1.25rem; }
+/* La primera sección tras el título no necesita tanto espacio arriba */
+.page-head + .section { padding-top: 0.5rem; }
+
+/* --- Sobre mí --- */
+.about-grid { display: grid; gap: 2.5rem; }
+.about-text p + p { margin-top: 1rem; }
+.about-actions { margin-top: 2rem; }
+
+.facts {
+  display: grid;
+  gap: 0;
+  padding: 1.5rem;
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  align-self: start;
+}
+.facts div { padding-block: 0.75rem; border-bottom: 1px solid var(--line); }
+.facts div:first-child { padding-top: 0; }
+.facts div:last-child { border-bottom: 0; padding-bottom: 0; }
+.facts dt { font-size: 0.85rem; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; }
+
+/* Lista de experiencia y formación (columna de fechas + contenido) */
+.timeline { list-style: none; padding: 0; }
+.timeline li {
+  display: grid;
+  gap: 0.25rem 2rem;
+  padding-block: 1.25rem;
+  border-top: 1px dashed var(--line);
+}
+.timeline li:first-child { border-top: 0; padding-top: 0; }
+.timeline .when { font-size: 0.9rem; color: var(--muted); }
+.timeline h3 span { font-weight: 500; color: var(--muted); }
+.timeline p { margin-top: 0.35rem; }
+
+.two-cols { display: grid; gap: 3rem; }
+
+/* --- Proyectos --- */
+.project-list { list-style: none; padding: 0; display: grid; gap: 3.5rem; }
+
+/* Cada proyecto: captura arriba en móvil, captura y texto lado a lado en pantallas grandes */
+.work { display: grid; gap: 1.5rem; }
+.work-img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+.work-body .status { font-size: 1.1rem; }
+.work-body h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); margin-top: 0.25rem; }
+.work-body p:not(.status):not(.work-links) { margin-top: 0.75rem; max-width: 36rem; }
+.work-body .chips { margin-top: 1.25rem; }
+.work-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.25rem; font-weight: 600; }
+
+/* --- Contacto --- */
+.contact-grid { display: grid; gap: 3rem; }
+.contact-list div { padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.contact-list div:first-child { padding-top: 0; }
+.contact-list dt { font-size: 0.85rem; color: var(--muted); }
+.contact-list dd { margin: 0; }
+.contact-list a, .contact-list strong { font-weight: 600; font-size: 1.1rem; color: var(--ink); word-break: break-word; }
+
+.form { display: grid; gap: 1.25rem; }
+.field { display: grid; gap: 0.4rem; }
+.field label { font-weight: 600; font-size: 0.95rem; }
+.field input,
+.field textarea {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #8A8478;   /* contraste mínimo 3:1 para que se vea el borde del campo */
+  border-radius: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+.field textarea { min-height: 9rem; resize: vertical; }
+.field input:focus,
+.field textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+/* Campo con error (la clase la pone JavaScript) */
+.field.has-error input,
+.field.has-error textarea { border-color: #B3261E; }
+.error-msg { color: #B3261E; font-size: 0.875rem; min-height: 1.2em; }
+.form-note { font-size: 0.9rem; color: var(--muted); }
+
+/* ---------- 7. Pie de página ---------- */
+.site-footer {
+  background: var(--night);
+  color: var(--night-text);
+  padding-block: 2.5rem;
+  font-size: 0.95rem;
+}
+.site-footer .container { display: grid; gap: 1rem; }
+.site-footer a { color: #fff; }
+.site-footer a:hover { color: var(--night-accent); }
+.site-footer .brand { color: #fff; }
+.site-footer .brand em { color: var(--night-accent); }
+.site-footer p { color: var(--night-text); }
+/* Email y ciudad como dos piezas: si no caben, bajan enteras sin separadores colgando */
+.footer-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+
+/* ---------- 8. Pantallas medianas y grandes ---------- */
+@media (min-width: 48em) { /* 768px */
+  :root { --gutter: 2rem; }
+
+  .section { padding-block: 5.5rem; }
+
+  /* En escritorio el menú siempre está visible y el botón desaparece */
+  .menu-toggle { display: none; }
+  .site-nav,
+  .no-js .site-nav { display: block; position: static; border: 0; background: none; }
+  .site-nav ul { display: flex; gap: 2rem; padding: 0; }
+  .site-nav li a { padding: 0; border: 0; }
+
+  .hero { padding-block: 5rem 4.5rem; }
+  .hero-grid { grid-template-columns: 1fr 14rem; align-items: end; gap: 4rem; }
+  .portrait { width: 100%; order: 0; }
+
+  .skills { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+
+  .work-index a { grid-template-columns: 14rem 1fr 1fr; align-items: baseline; gap: 2rem; }
+
+  .about-grid { grid-template-columns: 1fr 20rem; gap: 4rem; }
+  .two-cols { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .timeline li { grid-template-columns: 11rem 1fr; }
+  /* En columnas estrechas la fecha va encima, no al lado */
+  .timeline-stacked li { grid-template-columns: 1fr; }
+  .timeline .when { padding-top: 0.15rem; }
+
+  .project-list { gap: 5rem; }
+  .work { grid-template-columns: 1.15fr 1fr; align-items: center; gap: 3rem; }
+
+  .contact-grid { grid-template-columns: 20rem 1fr; gap: 5rem; }
+
+  .site-footer .container { grid-template-columns: 1fr auto; align-items: center; }
+}
