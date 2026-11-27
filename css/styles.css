@@ -5,6 +5,8 @@
 @font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+/* Arial ajustada a las medidas de Manrope: mientras carga la fuente buena, el texto ocupa casi lo mismo y no salta */
+@font-face { font-family: "Manrope Respaldo"; src: local("Arial"); size-adjust: 103.3%; ascent-override: 103.2%; descent-override: 29%; line-gap-override: 0%; }
 
 /* Variables */
 :root {
@@ -21,11 +23,17 @@
   --night-text: #CDD2DA;
   --night-accent: #7FD1B4;
 
-  --sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --sans: "Manrope", "Manrope Respaldo", system-ui, sans-serif;
+
+  /* Colores sueltos que antes estaban escritos a mano */
+  --error: #B3261E;
+  --borde-campo: #8A8478;   /* contraste mínimo 3:1 para que se vea el borde */
+  --seleccion: #CFE6DD;
 
   --container: 68rem;
   --gutter: 1rem;
   --radius: 0.75rem;
+  --radius-sm: 0.375rem;
   --header-h: 4rem;
 }
 
@@ -40,6 +48,7 @@ html { scroll-padding-top: calc(var(--header-h) + 1rem); }
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;   /* en móviles, sin contar las barras del navegador */
   display: flex;
   flex-direction: column;
   background: var(--paper);
@@ -54,11 +63,11 @@ main { flex: 1; } /* el pie queda abajo aunque la página sea corta */
 
 img { max-width: 100%; display: block; }
 
-a { color: var(--accent); text-underline-offset: 0.2em; }
+a { color: var(--accent); text-underline-offset: 0.2em; transition: color 0.2s; }
 a:hover { color: var(--accent-dark); }
 
 /* Texto seleccionado y cursor de los campos con los colores de la web */
-::selection { background: #CFE6DD; color: var(--ink); }
+::selection { background: var(--seleccion); color: var(--ink); }
 input, textarea { caret-color: var(--accent); }
 
 /* Anillo de foco visible solo al navegar con teclado */
@@ -72,6 +81,8 @@ h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 
 p { color: var(--ink-2); }
+/* Más zona pulsable en los enlaces dentro de un párrafo, sin mover el texto */
+p a { padding-block: 0.35em; }
 
 /* Si el sistema pide menos animaciones, las quito */
 @media (prefers-reduced-motion: reduce) {
@@ -128,16 +139,17 @@ p { color: var(--ink-2); }
   border-radius: 999px;
   border: 1px solid var(--ink);
   font-weight: 600;
-  font-size: 0.975rem;
+  font-size: 0.95rem;
   text-decoration: none;
   justify-content: center;
-  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 .btn-primary { background: var(--ink); color: #fff; }
 .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
 .btn-secondary { background: transparent; color: var(--ink); }
 /* Al pasar el ratón no se rellena de negro, para que no se confunda con el principal */
-.btn-secondary:hover { background: var(--paper-2); color: var(--ink); }
+.btn-secondary:hover { background: var(--paper-2); border-color: var(--accent-dark); color: var(--accent-dark); }
 
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
@@ -148,11 +160,11 @@ p { color: var(--ink-2); }
   font-weight: 500;
   padding: 0.2rem 0.6rem;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
-/* Módulo del ciclo al que pertenece cada proyecto */
-.modulo { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+/* Módulo del ciclo de cada proyecto: justo debajo del título, igual en todas las páginas */
+.modulo { margin-top: 0.3rem; font-size: 0.95rem; font-weight: 600; color: var(--ink-2); }
 
 /* Cabecera y menú */
 .site-header {
@@ -175,6 +187,9 @@ p { color: var(--ink-2); }
   color: var(--ink);
   text-decoration: none;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
 }
 .brand:hover { color: var(--ink); }
 
@@ -184,7 +199,7 @@ p { color: var(--ink-2); }
   font-weight: 600;
   font-size: 0.95rem;
   background: none;
-  border: 1px solid var(--line);
+  border: 1px solid var(--borde-campo);
   border-radius: 999px;
   padding: 0.4rem 1rem;
   min-height: 2.75rem;
@@ -201,7 +216,7 @@ p { color: var(--ink-2); }
   color: var(--ink-2);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.975rem;
+  font-size: 0.95rem;
 }
 .site-nav a:hover { color: var(--accent); }
 /* La página en la que estás aparece subrayada en verde */
@@ -268,7 +283,7 @@ p { color: var(--ink-2); }
 
 .portrait {
   aspect-ratio: 5 / 6;
-  border-radius: 0.6rem;
+  border-radius: var(--radius);
   overflow: hidden;
   background: var(--paper-2);
 }
@@ -287,7 +302,7 @@ p { color: var(--ink-2); }
 
 /* Lista de proyectos en la portada: captura grande, título, módulo, descripción y enlaces */
 .section-title:has(+ .section-intro) { margin-bottom: 1rem; }
-.section-intro { max-width: 40rem; margin-bottom: 1.75rem; }
+.section-intro { max-width: 36rem; margin-bottom: 1.75rem; }
 
 /* Sin borde arriba: la línea del título ya separa */
 .work-index { list-style: none; padding: 0; }
@@ -305,21 +320,29 @@ p { color: var(--ink-2); }
   object-fit: cover;
   object-position: top left;
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   background: var(--paper-2);
   transition: border-color 0.2s;
 }
 .work-thumb:hover img { border-color: var(--accent); }
 
 .work-text h3 { font-size: 1.3rem; }
-.work-text h3 a { color: var(--ink); text-decoration: none; }
-.work-text h3 a:hover { color: var(--accent); text-decoration: underline; }
-/* El módulo va justo debajo del título: es lo que ordena la lista */
-.work-text .modulo { margin-top: 0.3rem; font-size: 0.95rem; color: var(--ink-2); }
+/* El título enlaza a la ficha: subrayado suave para que se vea pulsable y más zona para el dedo */
+.work-text h3 a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  margin-block: -0.5rem;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.work-text h3 a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 .work-text p:not(.modulo):not(.work-links) { margin-top: 0.6rem; max-width: 36rem; }
 
-/* Enlaces de cada proyecto, con zona pulsable de 44 px para el dedo */
-.work-text .work-links {
+/* Enlaces de cada proyecto (portada y Proyectos), con zona pulsable de 44 px para el dedo */
+.work-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -328,7 +351,7 @@ p { color: var(--ink-2); }
   font-weight: 600;
   font-size: 0.95rem;
 }
-.work-text .work-links a:not(.btn) { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 2.75rem; }
+.work-links a:not(.btn) { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 2.75rem; }
 /* La demo va primero y como botón de contorno: es lo más fácil de probar para quien no programa */
 .btn-demo { min-height: 2.75rem; padding: 0.45rem 1rem; font-size: 0.9rem; gap: 0.35rem; }
 
@@ -351,6 +374,7 @@ p { color: var(--ink-2); }
 /* Llamada a contactar */
 .cierre p { margin-top: 1rem; max-width: 38rem; font-size: 1.125rem; }
 .cierre .actions { margin-top: 1.5rem; }
+.cierre .section-title { margin-bottom: 0; }
 
 /* Cabecera de las otras páginas */
 .page-head { padding-block: 3.5rem 2.5rem; }
@@ -364,6 +388,7 @@ p { color: var(--ink-2); }
 
 /* Sobre mí */
 .about-grid { display: grid; gap: 2.5rem; }
+.about-text p { max-width: 38rem; }
 .about-text p + p { margin-top: 1rem; }
 .about-actions { margin-top: 2rem; }
 
@@ -392,7 +417,7 @@ p { color: var(--ink-2); }
 .timeline li:first-child { border-top: 0; padding-top: 0; }
 .timeline .when { font-size: 0.9rem; color: var(--muted); }
 .timeline h3 span { font-weight: 500; color: var(--muted); }
-.timeline p { margin-top: 0.35rem; }
+.timeline p { margin-top: 0.35rem; max-width: 38rem; }
 
 .two-cols { display: grid; gap: 3rem; }
 
@@ -408,18 +433,19 @@ p { color: var(--ink-2); }
   border-radius: var(--radius);
   background: var(--paper-2);
 }
-.work-body h2 { font-size: clamp(1.5rem, 3vw, 1.75rem); margin-top: 0.25rem; }
+.work-body h2 { font-size: clamp(1.5rem, 3vw, 1.75rem); }
 .work-body p:not(.modulo):not(.work-links) { margin-top: 0.75rem; max-width: 36rem; }
 .work-body .chips { margin-top: 1.25rem; }
-.work-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.25rem; font-weight: 600; }
 
 /* Contacto */
 .contact-grid { display: grid; gap: 3rem; }
-.contact-list div { padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.contact-list div { padding-block: 0.5rem; border-bottom: 1px solid var(--line); }
 .contact-list div:first-child { padding-top: 0; }
 .contact-list dt { font-size: 0.85rem; color: var(--muted); }
 .contact-list dd { margin: 0; }
-.contact-list a, .contact-list strong { font-weight: 600; font-size: 1.1rem; color: var(--ink); word-break: break-word; }
+.contact-list a, .contact-list strong { font-weight: 600; font-size: 1.125rem; word-break: break-word; }
+.contact-list strong { color: var(--ink); }
+.contact-list a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
 .form { display: grid; gap: 1.25rem; }
 .field { display: grid; gap: 0.4rem; }
@@ -430,8 +456,9 @@ p { color: var(--ink-2); }
   font-size: 1rem;
   color: var(--ink);
   background: #fff;
-  border: 1px solid #8A8478; /* contraste mínimo 3:1 para que se vea el borde del campo */
-  border-radius: 0.6rem;
+  border: 1px solid var(--borde-campo);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
   padding: 0.75rem 0.9rem;
   width: 100%;
 }
@@ -440,9 +467,9 @@ p { color: var(--ink-2); }
 .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
 /* Campo con error (la clase la pone JavaScript) */
 .field.has-error input,
-.field.has-error textarea { border-color: #B3261E; }
-.error-msg { color: #B3261E; font-size: 0.875rem; min-height: 1.2em; }
-.form-note { font-size: 0.9rem; color: var(--muted); }
+.field.has-error textarea { border-color: var(--error); }
+.error-msg { color: var(--error); font-size: 0.9rem; min-height: 1.2em; }
+.form-note { font-size: 0.9rem; color: var(--muted); max-width: 38rem; }
 
 /* Pie */
 .site-footer {
@@ -457,7 +484,8 @@ p { color: var(--ink-2); }
 .site-footer .brand { color: #fff; }
 .site-footer p { color: var(--night-text); }
 /* Email y ciudad como dos piezas: si no caben, bajan enteras sin separadores colgando */
-.footer-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.footer-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; }
+.footer-meta a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
 /* Pantallas grandes */
 @media (min-width: 48em) {
@@ -470,7 +498,8 @@ p { color: var(--ink-2); }
   .site-nav,
   .no-js .site-nav { display: block; position: static; border: 0; background: none; }
   .site-nav ul { display: flex; gap: 2rem; padding: 0; }
-  .site-nav li a { padding: 0; border: 0; }
+  /* Sin relleno visible, pero con 44 px de alto para poder pulsarlos en una tablet */
+  .site-nav li a { padding: 0; border: 0; min-height: 2.75rem; display: flex; align-items: center; }
 
   .hero { padding-block: 2.75rem 2.5rem; }
   /* Los proyectos, lo más importante, empiezan antes que el resto de secciones */

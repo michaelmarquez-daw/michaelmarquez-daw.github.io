@@ -18,6 +18,7 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-600.woff2" as="font" type="font/woff2" crossorigin>
   <script>
     document.documentElement.classList.remove("no-js");
   </script>
@@ -55,91 +56,103 @@
         <ol class="project-list">
           <li>
             <article class="work" id="surco-discos">
-              <img class="work-img" src="assets/img/proyectos/tienda-php.jpg" alt="Catálogo de la tienda Surco Discos con los vinilos a la venta" width="960" height="600" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="assets/img/proyectos/tienda-php-640.webp 640w, assets/img/proyectos/tienda-php.webp 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)">
+                <img class="work-img" src="assets/img/proyectos/tienda-php.jpg" srcset="assets/img/proyectos/tienda-php-640.jpg 640w, assets/img/proyectos/tienda-php.jpg 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)" alt="Catálogo de la tienda Surco Discos con los vinilos a la venta" width="960" height="600" fetchpriority="high">
+              </picture>
               <div class="work-body">
-                <p class="modulo">Desarrollo web en entorno servidor</p>
                 <h2>Surco Discos</h2>
+                <p class="modulo">Desarrollo web en entorno servidor</p>
                 <p>Tienda online de vinilos con catálogo, buscador, carrito, registro de clientes y panel de administración. Al finalizar un pedido se guarda en una transacción que descuenta el stock, y si falta algún disco no se guarda nada.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>PHP</li><li>MySQL</li><li>PDO</li><li>HTML</li><li>CSS</li>
                 </ul>
-                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/tienda-php">Ver el código</a></p>
+                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/tienda-php">Código en GitHub<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a></p>
               </div>
             </article>
           </li>
           <li>
             <article class="work" id="calculadora-notas">
-              <img class="work-img" src="assets/img/proyectos/notas-js.jpg" alt="Boletín de notas con las calificaciones de los módulos de DAW y la media del ciclo" width="960" height="600" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="assets/img/proyectos/notas-js-640.webp 640w, assets/img/proyectos/notas-js.webp 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)">
+                <img class="work-img" src="assets/img/proyectos/notas-js.jpg" srcset="assets/img/proyectos/notas-js-640.jpg 640w, assets/img/proyectos/notas-js.jpg 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)" alt="Boletín de notas con las calificaciones de los módulos de DAW y la media del ciclo" width="960" height="600" loading="lazy">
+              </picture>
               <div class="work-body">
-                <p class="modulo">Desarrollo web en entorno cliente</p>
                 <h2>Calculadora de notas del ciclo</h2>
+                <p class="modulo">Desarrollo web en entorno cliente</p>
                 <p>Calcula la media del ciclo a partir de la nota de cada módulo. Carga los módulos desde un JSON, valida lo que escribes, dibuja un gráfico con CSS y guarda las notas en el navegador para que no se pierdan al recargar.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>JavaScript</li><li>JSON</li><li>localStorage</li><li>HTML</li><li>CSS</li>
                 </ul>
-                <p class="work-links">
-                  <a href="https://michaelmarquez-daw.github.io/notas-js/">Probar la demo</a>
-                  <a href="https://github.com/michaelmarquez-daw/notas-js">Ver el código</a>
-                </p>
+                <p class="work-links"><a class="btn btn-secondary btn-demo" href="https://michaelmarquez-daw.github.io/notas-js/">Probar la demo<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a><a href="https://github.com/michaelmarquez-daw/notas-js">Código en GitHub<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a></p>
               </div>
             </article>
           </li>
           <li>
             <article class="work" id="gestor-biblioteca">
-              <img class="work-img" src="assets/img/proyectos/biblioteca-java.jpg" alt="Sesión en la consola del gestor de biblioteca con préstamos y devoluciones" width="960" height="600" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="assets/img/proyectos/biblioteca-java-640.webp 640w, assets/img/proyectos/biblioteca-java.webp 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)">
+                <img class="work-img" src="assets/img/proyectos/biblioteca-java.jpg" srcset="assets/img/proyectos/biblioteca-java-640.jpg 640w, assets/img/proyectos/biblioteca-java.jpg 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)" alt="Sesión en la consola del gestor de biblioteca con préstamos y devoluciones" width="960" height="600" loading="lazy">
+              </picture>
               <div class="work-body">
-                <p class="modulo">Programación y Entornos de desarrollo</p>
                 <h2>Gestor de biblioteca</h2>
+                <p class="modulo">Programación y Entornos de desarrollo</p>
                 <p>Aplicación de consola para llevar libros, socios y préstamos. No deja prestar más de tres libros por socio, avisa de los retrasos y guarda todo en CSV. Las reglas tienen tests con JUnit.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>Java</li><li>Maven</li><li>JUnit 5</li>
                 </ul>
-                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/biblioteca-java">Ver el código</a></p>
+                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/biblioteca-java">Código en GitHub<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a></p>
               </div>
             </article>
           </li>
           <li>
             <article class="work" id="base-datos-instituto">
-              <img class="work-img" src="assets/img/proyectos/instituto-sql.jpg" alt="Resultados de consultas SQL sobre la base de datos del instituto" width="960" height="600" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="assets/img/proyectos/instituto-sql-640.webp 640w, assets/img/proyectos/instituto-sql.webp 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)">
+                <img class="work-img" src="assets/img/proyectos/instituto-sql.jpg" srcset="assets/img/proyectos/instituto-sql-640.jpg 640w, assets/img/proyectos/instituto-sql.jpg 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)" alt="Resultados de consultas SQL sobre la base de datos del instituto" width="960" height="600" loading="lazy">
+              </picture>
               <div class="work-body">
-                <p class="modulo">Bases de datos</p>
                 <h2>Base de datos de un instituto</h2>
+                <p class="modulo">Bases de datos</p>
                 <p>Del modelo entidad-relación a la base de datos montada: tablas con sus restricciones, datos de prueba, consultas de todo tipo y algo de programación en SQL (vistas, procedimientos y triggers).</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>SQL</li><li>MySQL</li><li>MariaDB</li>
                 </ul>
-                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/instituto-sql">Ver el código</a></p>
+                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/instituto-sql">Código en GitHub<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a></p>
               </div>
             </article>
           </li>
           <li>
             <article class="work" id="catalogo-videojuegos">
-              <img class="work-img" src="assets/img/proyectos/videojuegos-xml.jpg" alt="Catálogo de videojuegos generado con XSLT, ordenado por nota" width="960" height="600" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="assets/img/proyectos/videojuegos-xml-640.webp 640w, assets/img/proyectos/videojuegos-xml.webp 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)">
+                <img class="work-img" src="assets/img/proyectos/videojuegos-xml.jpg" srcset="assets/img/proyectos/videojuegos-xml-640.jpg 640w, assets/img/proyectos/videojuegos-xml.jpg 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)" alt="Catálogo de videojuegos generado con XSLT, ordenado por nota" width="960" height="600" loading="lazy">
+              </picture>
               <div class="work-body">
-                <p class="modulo">Lenguajes de marcas</p>
                 <h2>Catálogo de videojuegos</h2>
+                <p class="modulo">Lenguajes de marcas</p>
                 <p>Un catálogo en XML validado con DTD y XSD, consultado con XPath y transformado con XSLT en una página web y en un JSON que lee otra página con filtros en JavaScript.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>XML</li><li>XSD</li><li>XPath</li><li>XSLT</li><li>JSON</li>
                 </ul>
-                <p class="work-links">
-                  <a href="https://michaelmarquez-daw.github.io/videojuegos-xml/web/">Probar la demo</a>
-                  <a href="https://github.com/michaelmarquez-daw/videojuegos-xml">Ver el código</a>
-                </p>
+                <p class="work-links"><a class="btn btn-secondary btn-demo" href="https://michaelmarquez-daw.github.io/videojuegos-xml/web/">Probar la demo<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a><a href="https://github.com/michaelmarquez-daw/videojuegos-xml">Código en GitHub<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a></p>
               </div>
             </article>
           </li>
           <li>
             <article class="work" id="este-portfolio">
-              <img class="work-img" src="assets/img/proyectos/portfolio.jpg" alt="Portada de este portfolio" width="960" height="600" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="assets/img/proyectos/portfolio-640.webp 640w, assets/img/proyectos/portfolio.webp 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)">
+                <img class="work-img" src="assets/img/proyectos/portfolio.jpg" srcset="assets/img/proyectos/portfolio-640.jpg 640w, assets/img/proyectos/portfolio.jpg 960w" sizes="(min-width: 48em) 34rem, calc(100vw - 2rem)" alt="Portada de este portfolio" width="960" height="600" loading="lazy">
+              </picture>
               <div class="work-body">
-                <p class="modulo">Diseño y maquetación web</p>
                 <h2>Este portfolio</h2>
+                <p class="modulo">Diseño y maquetación web</p>
                 <p>Cuatro páginas en HTML, CSS y JavaScript, publicadas en GitHub Pages. Se adapta al móvil y el formulario de contacto se valida antes de abrir el correo.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub Pages</li>
                 </ul>
-                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/michaelmarquez-daw.github.io">Ver el código</a></p>
+                <p class="work-links"><a href="https://github.com/michaelmarquez-daw/michaelmarquez-daw.github.io">Código en GitHub<svg class="externo" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M6.5 3.5h6v6M12.5 3.5 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="sr-only"> (abre otra web)</span></a></p>
               </div>
             </article>
           </li>
