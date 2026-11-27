@@ -7,11 +7,9 @@
   <meta name="description" content="Proyectos que he hecho durante el ciclo de DAW: Java, JavaScript, PHP con MySQL, SQL y XML. Con capturas, código y demos.">
   <meta name="theme-color" content="#FBFAF6">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/instrument-serif-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-700.woff2" as="font" type="font/woff2" crossorigin>
   <script>
-    // Va aquí, en el <head>, para quitar "no-js" antes de que se pinte la página
     document.documentElement.classList.remove("no-js");
   </script>
   <link rel="stylesheet" href="css/styles.css">
@@ -22,7 +20,7 @@
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html">Michael <em>Márquez</em></a>
+      <a class="brand" href="index.html">Michael Márquez</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
       <nav class="site-nav" id="menu" aria-label="Principal">
         <ul>
@@ -38,7 +36,7 @@
   <main id="contenido">
     <section class="page-head">
       <div class="container">
-        <h1>Mis <em>proyectos</em></h1>
+        <h1>Proyectos</h1>
         <p class="lead">Proyectos pequeños que he ido haciendo durante el ciclo para practicar cada parte: programación en Java, desarrollo web en cliente y en servidor, bases de datos y lenguajes de marcas.</p>
       </div>
     </section>
@@ -50,7 +48,7 @@
             <article class="work">
               <img class="work-img" src="assets/img/proyectos/tienda-php.jpg" alt="Catálogo de la tienda Surco discos con las portadas de los vinilos" width="960" height="600" loading="lazy">
               <div class="work-body">
-                <p class="status">Desarrollo web en entorno servidor</p>
+                <p class="modulo">Desarrollo web en entorno servidor</p>
                 <h2>Surco discos</h2>
                 <p>Tienda online de vinilos con catálogo, buscador, carrito, registro de clientes y panel de administración. Al finalizar un pedido se guarda en una transacción que descuenta el stock, y si falta algún disco no se guarda nada.</p>
                 <ul class="chips" aria-label="Tecnologías">
@@ -64,7 +62,7 @@
             <article class="work">
               <img class="work-img" src="assets/img/proyectos/notas-js.jpg" alt="Boletín de notas con las calificaciones de los módulos de DAW y la media del ciclo" width="960" height="600" loading="lazy">
               <div class="work-body">
-                <p class="status">Desarrollo web en entorno cliente</p>
+                <p class="modulo">Desarrollo web en entorno cliente</p>
                 <h2>Calculadora de notas del ciclo</h2>
                 <p>Calcula la media del ciclo a partir de la nota de cada módulo. Carga los módulos desde un JSON, valida lo que escribes, dibuja un gráfico con CSS y guarda las notas en el navegador para que no se pierdan al recargar.</p>
                 <ul class="chips" aria-label="Tecnologías">
@@ -81,9 +79,9 @@
             <article class="work">
               <img class="work-img" src="assets/img/proyectos/biblioteca-java.jpg" alt="Sesión en la consola del gestor de biblioteca con préstamos y devoluciones" width="960" height="600" loading="lazy">
               <div class="work-body">
-                <p class="status">Programación y Entornos de desarrollo</p>
+                <p class="modulo">Programación y Entornos de desarrollo</p>
                 <h2>Gestor de biblioteca</h2>
-                <p>Aplicación de consola para gestionar libros, socios y préstamos de 14 días, con control de retrasos y un máximo de tres libros por socio. Guarda los datos en ficheros CSV y tiene 28 pruebas con JUnit.</p>
+                <p>Aplicación de consola para llevar libros, socios y préstamos. No deja prestar más de tres libros por socio, avisa de los retrasos y guarda todo en CSV. Las reglas tienen tests con JUnit.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>Java</li><li>Maven</li><li>JUnit 5</li>
                 </ul>
@@ -95,9 +93,9 @@
             <article class="work">
               <img class="work-img" src="assets/img/proyectos/instituto-sql.jpg" alt="Resultados de consultas SQL sobre la base de datos del instituto" width="960" height="600" loading="lazy">
               <div class="work-body">
-                <p class="status">Bases de datos</p>
+                <p class="modulo">Bases de datos</p>
                 <h2>Base de datos de un instituto</h2>
-                <p>Del modelo entidad-relación a la base de datos: tablas con sus restricciones, datos de prueba, 23 consultas resueltas, vistas, procedimientos, una función, triggers y usuarios con permisos.</p>
+                <p>Del modelo entidad-relación a la base de datos montada: tablas con sus restricciones, datos de prueba, consultas de todo tipo y algo de programación en SQL (vistas, procedimientos y triggers).</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>SQL</li><li>MySQL</li><li>MariaDB</li>
                 </ul>
@@ -109,7 +107,7 @@
             <article class="work">
               <img class="work-img" src="assets/img/proyectos/videojuegos-xml.jpg" alt="Catálogo de videojuegos generado con XSLT, ordenado por nota" width="960" height="600" loading="lazy">
               <div class="work-body">
-                <p class="status">Lenguajes de marcas</p>
+                <p class="modulo">Lenguajes de marcas</p>
                 <h2>Catálogo de videojuegos</h2>
                 <p>Un catálogo en XML validado con DTD y XSD, consultado con XPath y transformado con XSLT en una página web y en un JSON que lee otra página con filtros en JavaScript.</p>
                 <ul class="chips" aria-label="Tecnologías">
@@ -126,9 +124,9 @@
             <article class="work">
               <img class="work-img" src="assets/img/proyectos/portfolio.jpg" alt="Portada de este portfolio" width="960" height="600" loading="lazy">
               <div class="work-body">
-                <p class="status">Diseño y maquetación web</p>
+                <p class="modulo">Diseño y maquetación web</p>
                 <h2>Este portfolio</h2>
-                <p>La web en la que estás. Cuatro páginas con HTML, CSS y JavaScript sin plantillas ni frameworks, adaptada al móvil y con un formulario de contacto validado con JavaScript.</p>
+                <p>Cuatro páginas en HTML, CSS y JavaScript, publicadas en GitHub Pages. Se adapta al móvil y el formulario de contacto se valida antes de abrir el correo.</p>
                 <ul class="chips" aria-label="Tecnologías">
                   <li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub Pages</li>
                 </ul>
@@ -143,7 +141,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p><a class="brand" href="index.html">Michael <em>Márquez</em></a></p>
+      <p><a class="brand" href="index.html">Michael Márquez</a></p>
       <p class="footer-meta">
         <a href="mailto:michael.marquez.calvo2@gmail.com">michael.marquez.calvo2@gmail.com</a>
         <span>Madrid · <span data-year>2026</span></span>

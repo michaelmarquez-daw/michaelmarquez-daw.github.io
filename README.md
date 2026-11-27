@@ -1,12 +1,12 @@
 # Portfolio de Michael Márquez Calvo
 
-Mi web personal: quién soy, los proyectos que he hecho en el ciclo de Desarrollo de Aplicaciones Web y cómo contactar conmigo.
+Mi web personal con los proyectos que he hecho en el ciclo de DAW.
 
 Se puede ver en https://michaelmarquez-daw.github.io
 
 ## Tecnologías
 
-HTML, CSS y JavaScript, sin frameworks ni herramientas de compilación. Publicada con GitHub Pages.
+HTML, CSS y JavaScript. Publicada con GitHub Pages.
 
 ## Estructura
 
